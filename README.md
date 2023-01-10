@@ -27,17 +27,58 @@ NOR gate is actually a combination of two logic gates: OR gate followed by NOT g
 F=(((C.B'.A)+(D.C'.A)+(C.B'.A))')'
 
 ## Logic Diagram
+![output](logic.jpg)
 ## Procedure
 ## Program:
-/*
+```/*
 Program to implement the given logic function using NAND and NOR gates and to verify its operations in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
+Developed by: SASIRAJKUMAR TJ
+RegisterNumber:  22005240
 */
-## RTL realization
+Using NAND Operation:
 
+module comb1(A,B,C,D,F);
+input A,B,C,D;
+output F;
+wire P,Q,R;
+assign P = C&(~B)&(~A);
+assign Q = D&(~C)&(~A);
+assign R = (~C)&B&(~A);
+assign F = (~P&~Q&~R);
+endmodule
+
+Using NOR Operation:
+
+module comb2(A,B,C,D,F);
+input A,B,C,D;
+output F;
+wire P,Q,R,S;
+assign P = C&(~B)&A;
+assign Q = D&(~C)&A;
+assign R = C&(~B)&A;
+assign S = ~(P|Q|R);
+assign F = ~S;
+endmodule
+```
+## RTL realization
+for nand operation
+![output](univer.png)
+
+for nor operation
+![output](univr%20nor.png)
 ## Output:
-## RTL
 ## Timing Diagram
+for nand operation
+![output](univr%20nand%20time.png)
+
+for nor operation
+![output](unvr%20nor%20time.png)
+
+## truth table
+for nand operation
+![output](truth-table%20nand.png)
+
+for nor operation
+![output](truth%20table-nor.png)
 ## Result:
 Thus the given logic functions are implemented using NAND and NOR gates and their operations are verified using Verilog programming.
